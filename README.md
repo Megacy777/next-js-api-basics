@@ -33,9 +33,28 @@ to learn more about Next.js, take a look at the following resources:
 - [learn next.js](https://nextjs.org/learn) - an interactive next.js tutorial.
 
 
-integrate this with a database SQLite 
+integrate this with a database SQLite
+- install Prisma + SQLite
+```bash
+npm install prisma --save-dev
+npx prisma init --datasource-provider sqlite
+npm install @prisma/client
+```
+this creates:⬆️⬇️
+`/prisma/schema.prisma`
 
-Use Postman or curl to:
+- configure prisma schema
+    - define task model in `schema.prisma`
+
+
+- generate prisma client
+    - `npx prisma migrate dev --name init`
+    - create dev.db in /prisma
+    - generate your Prisma client
+
+- replace in-memory storage with DB operations in your API routes
+
+use postman or curl to:
     - POST /tasks – create a task
     - GET /tasks – list all tasks
     - GET /tasks/:id – get one task
